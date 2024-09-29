@@ -3,18 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:30:32 by luciama2          #+#    #+#             */
-/*   Updated: 2024/09/28 18:33:15 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/09/29 23:11:58 by luciammielg      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
-#include <cstring>
+#include "PhoneBook.hpp"
 
 int	main(int argc, char **argv)
 {
+	PhoneBook		pb;
+	std::string		command;
+	(void)argc;
+	(void)argv;
+
+	while (1) {
+		std::getline(std::cin, command);
+		if (command == "add")
+			pb.add();
+		else if (command == "search")
+			pb.search();
+		else if (command == "exit") {
+			pb.exit();
+			break ;			
+		}
+		command = "";
+	}
+	
 	return (0);
 }

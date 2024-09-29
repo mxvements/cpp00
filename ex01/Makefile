@@ -3,7 +3,9 @@ CC=		clang++
 FLAGS=	-Werror -Wextra -Wall -std=c++98
 
 #files
-FILES=		main.cpp
+FILES=		main.cpp \
+			Contact.cpp \
+			PhoneBook.cpp
 OBJ_PATH=	obj/
 OBJ=		$(FILES:%.cpp=$(OBJ_PATH)%.o)
 
