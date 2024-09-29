@@ -6,7 +6,7 @@
 /*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 21:21:23 by luciama2          #+#    #+#             */
-/*   Updated: 2024/09/30 00:34:23 by luciammielg      ###   ########.fr       */
+/*   Updated: 2024/09/30 00:51:33 by luciammielg      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void PhoneBook::add(void)
 		}
 	}
 
-	std::cout << "Save a new contact:" << std::endl;
+	std::cout << "  Save a new contact:" << std::endl;
 	std::cout << "> first_name:" << std::endl;
 	std::getline(std::cin, first_name);
 	std::cout << "> last_name:" << std::endl;
@@ -78,8 +78,8 @@ void PhoneBook::add(void)
 	this->_contacts[i].set_phone_number(phone_number);
 	this->_contacts[i].set_darkest_secret(darkest_secret);
 
-	std::cout << "	Contact saved!" << std::endl;
-	std::cout << "	> Use another command" << std::endl;
+	std::cout << "  Contact saved!" << std::endl;
+	std::cout << "> Use another command" << std::endl;
 }
 
 static void truncate(const std::string &str, size_t max_len)
@@ -111,7 +111,7 @@ void PhoneBook::search(void)
 	std::string index;
 	int			i;
 
-	std::cout << "List of contacts:" << std::endl;
+	std::cout << "  List of contacts:" << std::endl;
 	for (int j = 0; j < 8; j++)
 	{
 		contact = this->_contacts[j];
@@ -129,18 +129,37 @@ void PhoneBook::search(void)
 		truncate(contact.get_nickname(), 10);
 		std::cout << std::endl;
 	}
+	if (this->_contacts[0].get_index() == "")
+	{
+		std::cout << "  Empty list, returning" << std::endl;
+		std::cout << "> Use another command" << std::endl;
+		return ;
+	}
 
-	std::cout << "No more contacts, type in the idx to show info" << std::endl;
-	std::cin >> index;
-	i = atoi(index.c_str());
+	while (1)
+	{
+		std::cout << "> Type in the idx to show info" << std::endl;
+		std::cin >> index;
+		i = atoi(index.c_str());
+		if (i >= 0 && i < 8)
+		{
+			if (this->_contacts[i].get_index() == "")
+				std::cout << "  Contact empty, try again" << std::endl;
+			else
+				break ;
+		}
+		else
+			std::cout << "  Index out of bounds, try again" << std::endl;
+	}
 
-	std::cout << "	> Contact info:" << std::endl;
+	std::cout << "  Contact info:" << std::endl;
 	std::cout << this->_contacts[i].get_first_name() << std::endl;
 	std::cout << this->_contacts[i].get_last_name() << std::endl;
 	std::cout << this->_contacts[i].get_nickname() << std::endl;
 	std::cout << this->_contacts[i].get_phone_number() << std::endl;
 	std::cout << this->_contacts[i].get_darkest_secret() << std::endl;
-	std::cout << "	> Use another command" << std::endl;
+	std::cout << "  End of contact" << std::endl;
+	std::cout << "> Use another command" << std::endl;
 }
 
 /**
