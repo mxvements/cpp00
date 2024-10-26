@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 21:21:23 by luciama2          #+#    #+#             */
-/*   Updated: 2024/09/30 00:51:33 by luciammielg      ###   ########.fr       */
+/*   Updated: 2024/10/26 20:44:13 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ PhoneBook::~PhoneBook(void) {}
  */
 void PhoneBook::add(void)
 {
-	int i = 0;
-	std::stringstream index;
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
+	int 				i = 0;
+	std::stringstream	index;
+	std::string			first_name;
+	std::string			last_name;
+	std::string			nickname;
+	std::string			phone_number;
+	std::string			darkest_secret;
 
 	for (int j = 0; j < 8; j++)
 	{
@@ -115,7 +115,7 @@ void PhoneBook::search(void)
 	for (int j = 0; j < 8; j++)
 	{
 		contact = this->_contacts[j];
-		std::cout << std::setiosflags(std::ios::left);
+		std::cout << std::setiosflags(std::ios::right);
 		std::cout << std::setfill(' ') << std::setw(10);
 		std::cout << contact.get_index();
 		std::cout << " | ";
